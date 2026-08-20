@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ============================================
+   BRIGHTLY — Design System Tokens
+   Tailwind CSS v4 @theme configuration
+   ============================================ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ---- Color Palette ---- */
+  --color-forest: #063B2C;
+  --color-forest-dark: #042A1F;
+  --color-green-dark: #0B4A35;
+  --color-lime: #B9F227;
+  --color-lime-soft: #EAF8C9;
+  --color-offwhite: #F7F8F2;
+  --color-white: #FFFFFF;
+  --color-text-primary: #082B20;
+  --color-text-muted: #66736D;
+  --color-border-soft: #DDE5DD;
+
+  /* ---- Typography mapped to next/font variables ---- */
+  --font-heading: var(--font-heading), "Manrope", system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-body), "Inter", system-ui, -apple-system, sans-serif;
+
+  /* ---- Border Radius ---- */
+  --radius-sm: 10px;
+  --radius-button: 999px;
+  --radius-card-sm: 16px;
+  --radius-card: 20px;
+  --radius-card-lg: 24px;
+  --radius-photo: 28px;
+  --radius-hero: 36px;
+
+  /* ---- Spacing (Section vertical) ---- */
+  --spacing-section: 140px;
+  --spacing-section-tablet: 100px;
+  --spacing-section-mobile: 84px;
+
+  /* ---- Animation ---- */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 300ms;
+  --duration-normal: 500ms;
+  --duration-slow: 700ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================
+   Base Styles
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-offwhite);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Heading defaults ---- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+}
+
+/* ---- Selection ---- */
+::selection {
+  background-color: var(--color-lime);
+  color: var(--color-forest);
+}
+
+/* ---- Focus visible ---- */
+:focus-visible {
+  outline: 2px solid var(--color-lime);
+  outline-offset: 2px;
 }
