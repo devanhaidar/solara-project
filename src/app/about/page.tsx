@@ -62,45 +62,40 @@ const pillars = [
 const timeline = [
   {
     year: "2018",
-    phase: "Phase 01",
     tag: "Founding Era",
-    icon: Compass,
+    image: "/images/milestone-2018-pilot.jpg",
     title: "Inception & Pilot Grid",
-    metric: "2.5 MW Initial Grid",
+    metric: "2.5 MW Test Grid",
     desc: "Established by utility grid engineers with a mission to build decentralized industrial clean power systems.",
   },
   {
     year: "2020",
-    phase: "Phase 02",
     tag: "Commercial Scale",
-    icon: TrendingUp,
+    image: "/images/project-nexus-solar.jpg",
     title: "20 MW Commercial Portfolio",
     metric: "45 Logistics Hubs",
-    desc: "Delivered regional rooftop arrays across distribution centers, lowering client peak penalties by 38%.",
+    desc: "Delivered regional rooftop arrays across distribution centers, lowering client peak charges by 38%.",
   },
   {
     year: "2022",
-    phase: "Phase 03",
     tag: "Software & Storage",
-    icon: Cpu,
+    image: "/images/solutions-storage.jpg",
     title: "Solara OS & BESS Launch",
     metric: "Sub-Second SCADA",
     desc: "Introduced proprietary IoT monitoring hardware and deployed our first utility-scale battery storage.",
   },
   {
     year: "2024",
-    phase: "Phase 04",
     tag: "Major Landmark",
-    icon: Award,
+    image: "/images/project-floating-solar.jpg",
     title: "100 MW Milestone Reached",
     metric: "100 MW Online",
     desc: "Expanded into hybrid wind-solar microgrids and alpine floating solar with 99.98% uptime.",
   },
   {
     year: "2026",
-    phase: "Phase 05",
     tag: "Present Frontier",
-    icon: Sparkles,
+    image: "/images/project-urban-microgrid.jpg",
     title: "Multi-Gigawatt Ecosystem",
     metric: "250+ Sites / 120 MW+",
     desc: "Generating clean power across 250+ enterprise sites, accelerating 100% renewable baseload.",
@@ -304,80 +299,84 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Horizontal Timeline Track & Cards Grid */}
-            <div className="relative">
-              {/* Continuous Connected Progress Track Bar (Desktop) */}
-              <div className="hidden lg:block absolute top-7 left-12 right-12 h-1 bg-border-soft z-0">
+            {/* 1. Milestone Progress Track Line & Year Nodes ABOVE the Cards */}
+            <div className="relative mb-8 sm:mb-10">
+              {/* Continuous horizontal connecting line across all 5 milestones */}
+              <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 left-6 right-6 h-[2px] bg-border-soft z-0">
                 <div className="h-full bg-gradient-to-r from-forest via-emerald-600 to-lime w-full rounded-full" />
               </div>
 
-              {/* 5-Column Horizontal Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
-                {timeline.map((item, idx) => {
-                  const Icon = item.icon;
-                  return (
+              {/* 5 Year Node Headers placed directly above each card column */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
+                {timeline.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2.5 bg-[#F7F8F2] lg:bg-transparent py-1 pr-2 w-fit">
+                    {/* Node Dot */}
                     <div
-                      key={idx}
-                      className={`group flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-white border transition-all duration-300 relative hover:-translate-y-2 hover:shadow-2xl ${
+                      className={`w-5 h-5 rounded-full border-2 transition-all flex items-center justify-center shrink-0 ${
                         item.isCurrent
-                          ? "border-lime/80 shadow-lg ring-1 ring-lime/40"
-                          : "border-border-soft hover:border-lime/60"
+                          ? "bg-lime border-forest ring-4 ring-lime/30"
+                          : "bg-forest border-white shadow-xs"
                       }`}
                     >
-                      {/* Top Node Connector Indicator */}
-                      <div className="flex items-center justify-between mb-5">
-                        {/* Year Badge */}
-                        <div className="flex items-center gap-2">
-                          <div
-                            className={`w-3.5 h-3.5 rounded-full border-2 transition-all duration-300 ${
-                              item.isCurrent
-                                ? "bg-lime border-forest ring-4 ring-lime/40"
-                                : "bg-forest border-white group-hover:bg-lime"
-                            }`}
-                          />
-                          <span className="font-heading font-extrabold text-2xl text-forest group-hover:text-emerald-700 transition-colors">
-                            {item.year}
-                          </span>
-                        </div>
-
-                        {/* Phase Tag */}
-                        <span
-                          className={`text-[10px] font-heading font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${
-                            item.isCurrent
-                              ? "bg-lime text-forest font-extrabold"
-                              : "bg-[#F7F8F2] text-text-muted border border-border-soft/60"
-                          }`}
-                        >
-                          {item.phase}
-                        </span>
-                      </div>
-
-                      {/* Middle Content */}
-                      <div className="flex-1">
-                        <div className="w-10 h-10 rounded-2xl bg-forest/5 text-forest group-hover:bg-forest group-hover:text-lime flex items-center justify-center mb-4 transition-colors duration-300">
-                          <Icon size={18} />
-                        </div>
-
-                        <h3 className="font-heading font-bold text-base sm:text-lg text-forest group-hover:text-emerald-700 transition-colors mb-2 leading-snug">
-                          {item.title}
-                        </h3>
-
-                        <p className="text-text-secondary text-xs sm:text-sm leading-relaxed mb-4">
-                          {item.desc}
-                        </p>
-                      </div>
-
-                      {/* Bottom Metric Pill */}
-                      <div className="pt-4 border-t border-border-soft/60">
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F7F8F2] border border-border-soft/60 text-[11px] font-heading font-bold text-forest group-hover:border-lime/50 transition-colors w-full justify-between">
-                          <span className="text-text-muted text-[10px]">{item.tag}</span>
-                          <span className="text-emerald-700 font-extrabold text-[11px]">{item.metric}</span>
-                        </div>
-                      </div>
+                      <div className={`w-1.5 h-1.5 rounded-full ${item.isCurrent ? "bg-forest" : "bg-white"}`} />
                     </div>
-                  );
-                })}
+                    {/* Year Label */}
+                    <span
+                      className={`font-heading font-extrabold text-2xl sm:text-3xl tracking-tight transition-colors ${
+                        item.isCurrent ? "text-forest" : "text-forest/85"
+                      }`}
+                    >
+                      {item.year}
+                    </span>
+                  </div>
+                ))}
               </div>
+            </div>
+
+            {/* 2. 5 Horizontal Milestone Cards with Supporting Images */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+              {timeline.map((item, idx) => (
+                <div
+                  key={idx}
+                  className={`group flex flex-col justify-between rounded-3xl bg-white border overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
+                    item.isCurrent
+                      ? "border-lime/90 shadow-xl ring-1 ring-lime/40"
+                      : "border-border-soft hover:border-lime/60 hover:shadow-xl"
+                  }`}
+                >
+                  {/* Supporting Image Header */}
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 20vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-transparent" />
+                    <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between">
+                      <span className="text-[10px] font-heading font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-forest/85 backdrop-blur-md text-lime border border-white/10">
+                        {item.tag}
+                      </span>
+                      <span className="text-[11px] font-heading font-bold text-white drop-shadow-sm">
+                        {item.metric}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Card Body */}
+                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="font-heading font-bold text-base sm:text-lg text-forest group-hover:text-emerald-700 transition-colors mb-2 leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-text-secondary text-xs sm:text-[13px] leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
