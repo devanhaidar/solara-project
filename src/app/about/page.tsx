@@ -107,21 +107,33 @@ const team = [
   {
     name: "Dr. Marcus Vance",
     role: "Chief Executive Officer",
+    image: "/images/team-marcus-vance.jpg",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
     bio: "Ph.D. in Energy Systems (MIT), 18+ years leading utility-scale grid modernization and renewable asset deployment.",
   },
   {
     name: "Elena Rostova",
     role: "Chief Technology Officer",
+    image: "/images/team-elena-rostova.jpg",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
     bio: "Former Principal Architect at Global Grid Technologies, specialist in distributed PV-BESS power conversion and inverters.",
   },
   {
     name: "Devon Haidar",
     role: "Head of Project Engineering",
+    image: "/images/team-devon-haidar.jpg",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
     bio: "NABCEP Certified PV Professional with over 150 MW of turnkey commercial installations successfully commissioned.",
   },
   {
     name: "Amina Al-Mansoor",
     role: "VP of Sustainability & ESG",
+    image: "/images/team-amina-almansoor.jpg",
+    linkedin: "https://linkedin.com",
+    twitter: "https://x.com",
     bio: "Pioneered circular lifecycle asset recovery standards and corporate Science Based Targets (SBTi) compliance.",
   },
 ];
@@ -365,40 +377,74 @@ export default function AboutPage() {
         </section>
 
         {/* 6. Executive Leadership Profiles */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-white border-y border-border-soft">
+        <section className="py-20 sm:py-24 lg:py-28 bg-white border-y border-border-soft">
           <div className="max-w-[1720px] 2xl:max-w-[1840px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4">
               <div>
                 <span className="text-xs font-bold uppercase tracking-widest text-emerald-700">
-                  Leadership
+                  Leadership & Vision
                 </span>
-                <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-forest tracking-tight mt-2">
+                <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-forest tracking-tight mt-2">
                   The Architects Behind Solara
                 </h2>
               </div>
-              <p className="text-text-muted text-sm max-w-md">
-                Led by pioneers in electrical grid engineering, power electronics, and sustainable corporate finance.
+              <p className="text-text-secondary text-sm sm:text-base max-w-md leading-relaxed">
+                Led by pioneers in electrical grid engineering, power electronics, distributed energy software, and sustainable infrastructure finance.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
               {team.map((member, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-3xl bg-[#F7F8F2] border border-border-soft hover:shadow-lg transition-all duration-300"
+                  className="group rounded-[32px] bg-[#F1F3F2] border border-[#E2E5E3] overflow-hidden flex flex-col justify-between hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-forest text-lime flex items-center justify-center font-heading font-extrabold text-xl mb-4">
-                    {member.name.split(" ").map(n => n[0]).join("")}
+                  {/* Top Text Content */}
+                  <div className="pt-7 px-7 pb-2 z-10">
+                    <h3 className="font-heading font-extrabold text-2xl sm:text-[26px] text-neutral-900 tracking-tight leading-tight">
+                      {member.name}
+                    </h3>
+                    <p className="text-neutral-500 italic font-serif text-sm sm:text-base mt-1 tracking-wide">
+                      {member.role}
+                    </p>
                   </div>
-                  <h3 className="font-heading font-bold text-lg text-forest">
-                    {member.name}
-                  </h3>
-                  <div className="text-xs font-semibold text-emerald-700 mb-3">
-                    {member.role}
+
+                  {/* Portrait & Social Badges */}
+                  <div className="relative w-full aspect-[4/5] overflow-hidden mt-3">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+
+                    {/* Social Badges Floating at Bottom Right */}
+                    <div className="absolute bottom-4 right-4 flex items-center gap-1.5 z-20">
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${member.name} on LinkedIn`}
+                        className="w-8 h-8 rounded-lg bg-neutral-900/90 hover:bg-forest text-white flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-md backdrop-blur-sm"
+                      >
+                        <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                      </a>
+                      <a
+                        href={member.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${member.name} on X`}
+                        className="w-8 h-8 rounded-lg bg-neutral-900/90 hover:bg-forest text-white flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-md backdrop-blur-sm"
+                      >
+                        <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-                  <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                    {member.bio}
-                  </p>
                 </div>
               ))}
             </div>
