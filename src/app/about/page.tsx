@@ -281,102 +281,95 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 5. Milestones Timeline (Horizontal Executive Roadmap) */}
-        <section className="py-16 sm:py-20 lg:py-24 overflow-hidden">
+        {/* 5. Milestones Timeline (Split Sticky Narrative + Scrolling Story) */}
+        <section className="py-20 sm:py-28 lg:py-32 bg-[#FBFBFA] border-t border-border-soft overflow-hidden">
           <div className="max-w-[1720px] 2xl:max-w-[1840px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest/5 text-forest text-xs font-semibold uppercase tracking-wider mb-3">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-24 items-start">
+              {/* Left Column: Sticky Narrative & Key Stats */}
+              <div className="lg:col-span-5 lg:sticky lg:top-36 self-start space-y-6">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-forest/5 border border-forest/10 text-forest text-xs font-semibold uppercase tracking-wider">
                   <TrendingUp size={13} className="text-emerald-700" />
-                  <span>Growth & Trajectory</span>
+                  <span>Our Journey & Growth</span>
                 </div>
-                <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-forest tracking-tight">
-                  Milestones That Shaped Our Clean Energy Legacy
+
+                <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-forest tracking-tight leading-[1.15]">
+                  Building a Cleaner Future, One Milestone at a Time
                 </h2>
-              </div>
-              <p className="text-text-muted text-xs sm:text-sm max-w-md leading-relaxed">
-                From pioneering modular rooftop ballasting to engineering multi-megawatt microgrids and autonomous AI grid dispatch.
-              </p>
-            </div>
 
-            {/* 1. Milestone Progress Track Line & Year Nodes ABOVE the Cards */}
-            <div className="relative mb-8 sm:mb-10">
-              {/* Continuous horizontal connecting line across all 5 milestones */}
-              <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 left-6 right-6 h-[2px] bg-border-soft z-0">
-                <div className="h-full bg-gradient-to-r from-forest via-emerald-600 to-lime w-full rounded-full" />
-              </div>
+                <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
+                  From our first 2.5 MW industrial microgrid pilot to powering over 250+ enterprise hubs and utility portfolios, explore how Solara engineered the modern clean energy transition.
+                </p>
 
-              {/* 5 Year Node Headers placed directly above each card column */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 relative z-10">
-                {timeline.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2.5 bg-[#F7F8F2] lg:bg-transparent py-1 pr-2 w-fit">
-                    {/* Node Dot */}
-                    <div
-                      className={`w-5 h-5 rounded-full border-2 transition-all flex items-center justify-center shrink-0 ${
-                        item.isCurrent
-                          ? "bg-lime border-forest ring-4 ring-lime/30"
-                          : "bg-forest border-white shadow-xs"
-                      }`}
-                    >
-                      <div className={`w-1.5 h-1.5 rounded-full ${item.isCurrent ? "bg-forest" : "bg-white"}`} />
-                    </div>
-                    {/* Year Label */}
-                    <span
-                      className={`font-heading font-extrabold text-2xl sm:text-3xl tracking-tight transition-colors ${
-                        item.isCurrent ? "text-forest" : "text-forest/85"
-                      }`}
-                    >
-                      {item.year}
-                    </span>
+                {/* Track Record Stats */}
+                <div className="pt-4 grid grid-cols-2 gap-4 border-t border-border-soft">
+                  <div className="p-4 sm:p-5 rounded-2xl bg-white border border-border-soft shadow-xs">
+                    <div className="font-heading font-extrabold text-2xl sm:text-3xl text-forest">120+ MW</div>
+                    <div className="text-xs text-text-muted mt-1 font-medium">Installed Capacity</div>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 2. 5 Horizontal Milestone Cards with Supporting Images */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-              {timeline.map((item, idx) => (
-                <div
-                  key={idx}
-                  className={`group flex flex-col justify-between rounded-3xl bg-white border overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
-                    item.isCurrent
-                      ? "border-lime/90 shadow-xl ring-1 ring-lime/40"
-                      : "border-border-soft hover:border-lime/60 hover:shadow-xl"
-                  }`}
-                >
-                  {/* Supporting Image Header */}
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, 20vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-transparent" />
-                    <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between">
-                      <span className="text-[10px] font-heading font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-forest/85 backdrop-blur-md text-lime border border-white/10">
-                        {item.tag}
-                      </span>
-                      <span className="text-[11px] font-heading font-bold text-white drop-shadow-sm">
-                        {item.metric}
-                      </span>
-                    </div>
+                  <div className="p-4 sm:p-5 rounded-2xl bg-white border border-border-soft shadow-xs">
+                    <div className="font-heading font-extrabold text-2xl sm:text-3xl text-emerald-700">99.98%</div>
+                    <div className="text-xs text-text-muted mt-1 font-medium">System Uptime</div>
                   </div>
+                </div>
+              </div>
 
-                  {/* Card Body */}
-                  <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="font-heading font-bold text-base sm:text-lg text-forest group-hover:text-emerald-700 transition-colors mb-2 leading-snug">
+              {/* Right Column: Scrolling Milestones with Vertical Connecting Line */}
+              <div className="lg:col-span-7 relative pl-8 sm:pl-12">
+                {/* Continuous Vertical Timeline Track */}
+                <div className="absolute left-[7px] sm:left-[11px] top-3 bottom-8 w-[2px] bg-gradient-to-b from-forest via-emerald-600 to-lime rounded-full" />
+
+                <div className="space-y-14 sm:space-y-20">
+                  {timeline.map((item, idx) => (
+                    <div key={idx} className="relative group">
+                      {/* Timeline Node Dot */}
+                      <div
+                        className={`absolute -left-[32px] sm:-left-[48px] top-1.5 w-5 h-5 rounded-full border-2 transition-all duration-300 flex items-center justify-center shrink-0 ${
+                          item.isCurrent
+                            ? "bg-lime border-forest ring-4 ring-lime/30 shadow-md"
+                            : "bg-forest border-white ring-2 ring-forest/10 shadow-xs group-hover:scale-110 group-hover:bg-emerald-700"
+                        }`}
+                      >
+                        <div className={`w-1.5 h-1.5 rounded-full ${item.isCurrent ? "bg-forest" : "bg-white"}`} />
+                      </div>
+
+                      {/* Year Label */}
+                      <div className="text-sm font-heading font-bold text-emerald-700 tracking-wider mb-2">
+                        {item.year}
+                      </div>
+
+                      {/* Milestone Title */}
+                      <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-forest tracking-tight mb-3">
                         {item.title}
                       </h3>
-                      <p className="text-text-secondary text-xs sm:text-[13px] leading-relaxed">
+
+                      {/* Description */}
+                      <p className="text-text-secondary text-sm sm:text-base leading-relaxed mb-6 max-w-xl">
                         {item.desc}
                       </p>
+
+                      {/* Supporting Image Card */}
+                      <div className="relative aspect-[16/10] w-full max-w-xl rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-border-soft group-hover:shadow-2xl transition-all duration-500">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 650px"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-forest/50 via-transparent to-transparent pointer-events-none" />
+                        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between pointer-events-none">
+                          <span className="text-xs font-heading font-semibold px-2.5 py-1 rounded-lg bg-forest/80 backdrop-blur-md text-lime border border-white/10">
+                            {item.tag}
+                          </span>
+                          <span className="text-xs font-heading font-bold text-white drop-shadow-md">
+                            {item.metric}
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
