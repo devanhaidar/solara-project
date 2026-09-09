@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrightlyLogoIcon } from "@/components/icons/brand-icons";
@@ -32,10 +33,34 @@ export function Navbar({ className = "" }: NavbarProps) {
   }, []);
 
   const solutionsSubmenu = [
-    { label: "Solar Energy", href: "/solutions/solar-energy", desc: "Commercial & Industrial Photovoltaics" },
-    { label: "Wind Generation", href: "/solutions/wind-energy", desc: "Onshore Direct-Drive Turbines" },
-    { label: "Battery Storage (BESS)", href: "/solutions/energy-storage", desc: "Megawatt-Scale Resiliency" },
-    { label: "Smart Energy Management", href: "/solutions/smart-energy", desc: "Solara OS Telemetry & AI Dispatch" },
+    {
+      label: "Solar Energy Systems",
+      category: "Photovoltaics",
+      href: "/solutions/solar-energy",
+      desc: "Commercial rooftop, carport & utility-scale bifacial PV arrays.",
+      image: "/images/solutions-solar.jpg",
+    },
+    {
+      label: "Wind Generation",
+      category: "Kinetic Power",
+      href: "/solutions/wind-energy",
+      desc: "Direct-drive low-acoustic onshore turbines for 24/7 power.",
+      image: "/images/solutions-wind.jpg",
+    },
+    {
+      label: "Battery Storage (BESS)",
+      category: "Energy Storage",
+      href: "/solutions/energy-storage",
+      desc: "Sub-16ms backup islanding & peak tariff shaving systems.",
+      image: "/images/solutions-storage.jpg",
+    },
+    {
+      label: "Smart Energy Management",
+      category: "Solara OS Telemetry",
+      href: "/solutions/smart-energy",
+      desc: "Autonomous AI load balancing & real-time grid orchestration.",
+      image: "/images/solutions-smart-iot.jpg",
+    },
   ];
 
   const isSolutionsActive = pathname.startsWith("/solutions");
@@ -63,7 +88,7 @@ export function Navbar({ className = "" }: NavbarProps) {
             >
               <Link
                 href="/solutions"
-                className={`flex items-center gap-1.5 text-xs sm:text-[13px] xl:text-sm font-heading font-bold tracking-wider transition-all py-1.5 cursor-pointer ${
+                className={`flex items-center gap-1.5 text-xs sm:text-[13px] xl:text-sm font-heading font-bold tracking-wider transition-all py-2 cursor-pointer ${
                   isSolutionsActive
                     ? isScrolled
                       ? "text-forest bg-lime/40 px-3.5 py-1.5 rounded-full"
@@ -82,37 +107,100 @@ export function Navbar({ className = "" }: NavbarProps) {
                 />
               </Link>
 
-              {/* Dropdown Menu */}
+              {/* Wide Mega-Menu Dropdown with Hover Bridge */}
               {solutionsOpen && (
-                <div
-                  className={`absolute top-full left-0 mt-3 w-76 rounded-2xl p-2.5 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 z-50 ${
-                    isScrolled
-                      ? "bg-white backdrop-blur-xl border border-border-soft text-forest shadow-2xl"
-                      : "bg-[#042A1F]/95 backdrop-blur-2xl border border-white/20 text-white shadow-2xl"
-                  }`}
-                >
-                  {solutionsSubmenu.map((subItem) => (
-                    <Link
-                      key={subItem.label}
-                      href={subItem.href}
-                      className={`block px-4 py-3 rounded-xl transition-colors ${
-                        isScrolled
-                          ? "hover:bg-lime-soft/70 text-forest"
-                          : "hover:bg-white/10 text-white"
-                      }`}
-                    >
-                      <div className="font-heading font-bold text-xs xl:text-sm">
-                        {subItem.label}
-                      </div>
-                      <div
-                        className={`text-[11px] mt-0.5 ${
-                          isScrolled ? "text-text-muted" : "text-white/60"
+                <div className="absolute top-full left-0 pt-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                  {/* Invisible hover bridge connecting trigger to menu */}
+                  <div className="absolute -top-3 inset-x-0 h-4 pointer-events-auto" />
+                  
+                  <div
+                    className={`w-[680px] xl:w-[740px] rounded-3xl p-5 shadow-2xl transition-all ${
+                      isScrolled
+                        ? "bg-white/98 backdrop-blur-2xl border border-black/10 text-forest shadow-[0_20px_50px_rgba(0,0,0,0.12)]"
+                        : "bg-[#042A1F]/98 backdrop-blur-3xl border border-white/20 text-white shadow-[0_25px_60px_rgba(0,0,0,0.45)]"
+                    }`}
+                  >
+                    {/* Header Label */}
+                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
+                      <span className={`text-[11px] font-heading font-extrabold uppercase tracking-widest ${
+                        isScrolled ? "text-emerald-800" : "text-lime"
+                      }`}>
+                        Renewable Energy Solutions Portfolio
+                      </span>
+                      <Link
+                        href="/solutions"
+                        className={`text-xs font-semibold flex items-center gap-1 hover:underline ${
+                          isScrolled ? "text-forest" : "text-white/80 hover:text-white"
                         }`}
                       >
-                        {subItem.desc}
-                      </div>
-                    </Link>
-                  ))}
+                        <span>View All Solutions</span>
+                        <ArrowRight size={12} />
+                      </Link>
+                    </div>
+
+                    {/* 2x2 Grid of Rich Cards */}
+                    <div className="grid grid-cols-2 gap-3.5">
+                      {solutionsSubmenu.map((subItem) => (
+                        <Link
+                          key={subItem.label}
+                          href={subItem.href}
+                          className={`group flex items-center gap-3.5 p-3 rounded-2xl transition-all duration-200 ${
+                            isScrolled
+                              ? "hover:bg-lime-soft/70 border border-transparent hover:border-lime/50"
+                              : "hover:bg-white/10 border border-transparent hover:border-white/15"
+                          }`}
+                        >
+                          {/* Thumbnail Image */}
+                          <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-xl overflow-hidden shrink-0 shadow-sm">
+                            <Image
+                              src={subItem.image}
+                              alt={subItem.label}
+                              fill
+                              className="object-cover group-hover:scale-110 transition-transform duration-300"
+                              sizes="80px"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                          </div>
+
+                          {/* Info */}
+                          <div className="flex-1 min-w-0">
+                            <span className={`text-[10px] font-bold uppercase tracking-wider block mb-0.5 ${
+                              isScrolled ? "text-emerald-700" : "text-lime"
+                            }`}>
+                              {subItem.category}
+                            </span>
+                            <div className={`font-heading font-bold text-xs sm:text-sm truncate group-hover:text-emerald-600 transition-colors ${
+                              isScrolled ? "text-forest" : "text-white"
+                            }`}>
+                              {subItem.label}
+                            </div>
+                            <p className={`text-[11px] line-clamp-2 mt-0.5 leading-snug ${
+                              isScrolled ? "text-text-muted" : "text-white/60"
+                            }`}>
+                              {subItem.desc}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+
+                    {/* Bottom CTA Banner */}
+                    <div className={`mt-4 pt-3.5 border-t flex items-center justify-between text-xs ${
+                      isScrolled ? "border-border-soft text-text-secondary" : "border-white/10 text-white/70"
+                    }`}>
+                      <span className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-lime animate-pulse" />
+                        <span>All systems backed by 25-year linear performance guarantee</span>
+                      </span>
+                      <Link
+                        href="/contact"
+                        className="font-heading font-bold text-lime-dark hover:underline flex items-center gap-1"
+                      >
+                        <span>Schedule Audit</span>
+                        <ArrowRight size={12} />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -237,15 +325,21 @@ export function Navbar({ className = "" }: NavbarProps) {
               >
                 Solutions
               </Link>
-              <div className="pl-3 flex flex-col gap-1 border-l-2 border-lime/40">
+              <div className="pl-2 flex flex-col gap-2 border-l-2 border-lime/40 my-1">
                 {solutionsSubmenu.map((sub) => (
                   <Link
                     key={sub.label}
                     href={sub.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-xs py-1 opacity-80 hover:opacity-100"
+                    className="flex items-center gap-2.5 p-1.5 rounded-xl hover:bg-white/10 transition-colors"
                   >
-                    {sub.label}
+                    <div className="relative w-9 h-9 rounded-lg overflow-hidden shrink-0 shadow-xs">
+                      <Image src={sub.image} alt={sub.label} fill className="object-cover" sizes="36px" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold truncate">{sub.label}</div>
+                      <div className="text-[10px] opacity-70 truncate">{sub.desc}</div>
+                    </div>
                   </Link>
                 ))}
               </div>
