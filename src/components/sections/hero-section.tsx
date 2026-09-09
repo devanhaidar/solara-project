@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/navigation/navbar";
 import {
   SolarWindIcon,
   EnergySavingsChartIcon,
@@ -29,15 +28,14 @@ export function HeroSection() {
         {/* Organic Light Gradients for Text Contrast */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#F7F8F2] via-[#F7F8F2]/90 to-transparent w-full lg:w-[62%] xl:w-[54%] 2xl:w-[48%]" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#F7F8F2]/90 via-transparent to-transparent h-64 lg:hidden" />
+        {/* Top atmospheric vignette for floating glass navbar */}
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/30 via-black/10 to-transparent pointer-events-none" />
         {/* Bottom subtle gradient for card contrast */}
         <div className="absolute inset-x-0 bottom-0 h-52 sm:h-64 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
       </div>
 
-      {/* Seamless Integrated Top Navbar */}
-      <Navbar />
-
       {/* Main Responsive Content Canvas */}
-      <div className="relative z-10 w-full max-w-[1720px] 2xl:max-w-[1840px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 flex-1 flex flex-col justify-between pt-1 sm:pt-2 pb-4 sm:pb-6">
+      <div className="relative z-10 w-full max-w-[1720px] 2xl:max-w-[1840px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 flex-1 flex flex-col justify-between pt-20 sm:pt-24 lg:pt-28 pb-4 sm:pb-6">
         {/* Top / Middle Left: Headline, Badge & CTAs */}
         <motion.div
           variants={staggerContainer}

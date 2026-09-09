@@ -54,6 +54,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { Navbar } from "@/components/navigation/navbar";
+
 /* ============================================
    Root Layout
    ============================================ */
@@ -65,6 +67,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${manrope.variable} ${inter.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-offwhite text-text-primary antialiased">
+        <Navbar />
         {children}
       </body>
     </html>

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Navbar } from "@/components/navigation/navbar";
 import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -50,13 +49,8 @@ export function PageHeader({
         }}
       />
 
-      {/* Top Navbar */}
-      <div className="relative z-30">
-        <Navbar className="!bg-transparent text-offwhite" />
-      </div>
-
       {/* Page Title & Breadcrumb Content */}
-      <div className="relative z-20 max-w-[1720px] 2xl:max-w-[1840px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 pt-8 sm:pt-12 md:pt-16 pb-16 sm:pb-20 lg:pb-24">
+      <div className="relative z-20 max-w-[1720px] 2xl:max-w-[1840px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 lg:pb-24">
         {/* Breadcrumb Navigation */}
         <motion.nav 
           initial={{ opacity: 0, y: -10 }}
