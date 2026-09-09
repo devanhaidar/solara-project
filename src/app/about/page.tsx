@@ -282,7 +282,7 @@ export default function AboutPage() {
         </section>
 
         {/* 5. Milestones Timeline (Split Sticky Narrative + Scrolling Story) */}
-        <section className="py-20 sm:py-28 lg:py-32 bg-[#FBFBFA] border-t border-border-soft overflow-hidden">
+        <section className="py-20 sm:py-28 lg:py-36 bg-[#FBFBFA] border-t border-border-soft relative">
           <div className="max-w-[1720px] 2xl:max-w-[1840px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-24 items-start">
               {/* Left Column: Sticky Narrative & Key Stats */}
@@ -313,17 +313,17 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Right Column: Scrolling Milestones with Vertical Connecting Line */}
-              <div className="lg:col-span-7 relative pl-8 sm:pl-12">
+              {/* Right Column: Scrolling Milestones with Vertical Connecting Line (No Images) */}
+              <div className="lg:col-span-7 relative pl-8 sm:pl-14">
                 {/* Continuous Vertical Timeline Track */}
-                <div className="absolute left-[7px] sm:left-[11px] top-3 bottom-8 w-[2px] bg-gradient-to-b from-forest via-emerald-600 to-lime rounded-full" />
+                <div className="absolute left-[7px] sm:left-[13px] top-3 bottom-12 w-[2px] bg-gradient-to-b from-forest via-emerald-600 to-lime rounded-full" />
 
-                <div className="space-y-14 sm:space-y-20">
+                <div className="space-y-20 sm:space-y-28 lg:space-y-32 pb-12">
                   {timeline.map((item, idx) => (
                     <div key={idx} className="relative group">
                       {/* Timeline Node Dot */}
                       <div
-                        className={`absolute -left-[32px] sm:-left-[48px] top-1.5 w-5 h-5 rounded-full border-2 transition-all duration-300 flex items-center justify-center shrink-0 ${
+                        className={`absolute -left-[32px] sm:-left-[50px] top-1.5 w-5 h-5 rounded-full border-2 transition-all duration-300 flex items-center justify-center shrink-0 ${
                           item.isCurrent
                             ? "bg-lime border-forest ring-4 ring-lime/30 shadow-md"
                             : "bg-forest border-white ring-2 ring-forest/10 shadow-xs group-hover:scale-110 group-hover:bg-emerald-700"
@@ -333,7 +333,7 @@ export default function AboutPage() {
                       </div>
 
                       {/* Year Label */}
-                      <div className="text-sm font-heading font-bold text-emerald-700 tracking-wider mb-2">
+                      <div className="text-sm sm:text-base font-heading font-bold text-emerald-700 tracking-wider mb-2">
                         {item.year}
                       </div>
 
@@ -343,28 +343,18 @@ export default function AboutPage() {
                       </h3>
 
                       {/* Description */}
-                      <p className="text-text-secondary text-sm sm:text-base leading-relaxed mb-6 max-w-xl">
+                      <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-xl">
                         {item.desc}
                       </p>
 
-                      {/* Supporting Image Card */}
-                      <div className="relative aspect-[16/10] w-full max-w-xl rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-border-soft group-hover:shadow-2xl transition-all duration-500">
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 650px"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-forest/50 via-transparent to-transparent pointer-events-none" />
-                        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between pointer-events-none">
-                          <span className="text-xs font-heading font-semibold px-2.5 py-1 rounded-lg bg-forest/80 backdrop-blur-md text-lime border border-white/10">
-                            {item.tag}
-                          </span>
-                          <span className="text-xs font-heading font-bold text-white drop-shadow-md">
-                            {item.metric}
-                          </span>
-                        </div>
+                      {/* Subtle Milestone Highlight Chip */}
+                      <div className="mt-4 flex flex-wrap items-center gap-3">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-forest/5 text-forest border border-forest/10">
+                          {item.tag}
+                        </span>
+                        <span className="text-xs font-medium text-emerald-700">
+                          {item.metric}
+                        </span>
                       </div>
                     </div>
                   ))}
