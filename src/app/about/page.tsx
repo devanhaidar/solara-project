@@ -15,6 +15,7 @@ import {
   Globe2,
   Cpu,
   ArrowRight,
+  Sparkles,
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -61,28 +62,49 @@ const pillars = [
 const timeline = [
   {
     year: "2018",
-    title: "Founding & Pilot Grid",
-    desc: "Established by a core team of former utility grid engineers with a mission to decentralize enterprise industrial power.",
+    phase: "Phase 01",
+    tag: "Founding Era",
+    icon: Compass,
+    title: "Inception & Pilot Grid",
+    metric: "2.5 MW Initial Grid",
+    desc: "Established by utility grid engineers with a mission to build decentralized industrial clean power systems.",
   },
   {
     year: "2020",
+    phase: "Phase 02",
+    tag: "Commercial Scale",
+    icon: TrendingUp,
     title: "20 MW Commercial Portfolio",
-    desc: "Delivered regional rooftop arrays across 45 logistics distribution hubs, lowering client peak-demand penalties by 38%.",
+    metric: "45 Logistics Hubs",
+    desc: "Delivered regional rooftop arrays across distribution centers, lowering client peak penalties by 38%.",
   },
   {
     year: "2022",
-    title: "Solara OS Deployment",
-    desc: "Introduced our proprietary IoT monitoring hardware and AI telemetry platform, expanding into utility-scale battery storage (BESS).",
+    phase: "Phase 03",
+    tag: "Software & Storage",
+    icon: Cpu,
+    title: "Solara OS & BESS Launch",
+    metric: "Sub-Second SCADA",
+    desc: "Introduced proprietary IoT monitoring hardware and deployed our first utility-scale battery storage.",
   },
   {
     year: "2024",
+    phase: "Phase 04",
+    tag: "Major Landmark",
+    icon: Award,
     title: "100 MW Milestone Reached",
-    desc: "Expanded into hybrid wind-solar microgrids and multi-megawatt floating solar installations with zero grid downtime.",
+    metric: "100 MW Online",
+    desc: "Expanded into hybrid wind-solar microgrids and alpine floating solar with 99.98% uptime.",
   },
   {
     year: "2026",
-    title: "Next-Gen Net-Zero Ecosystem",
-    desc: "Over 120 MW generating clean power across 250+ enterprise clients, driving the transition toward 100% renewable baseload.",
+    phase: "Phase 05",
+    tag: "Present Frontier",
+    icon: Sparkles,
+    title: "Multi-Gigawatt Ecosystem",
+    metric: "250+ Sites / 120 MW+",
+    desc: "Generating clean power across 250+ enterprise sites, accelerating 100% renewable baseload.",
+    isCurrent: true,
   },
 ];
 
@@ -264,35 +286,98 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 5. Milestones Timeline */}
-        <section className="py-16 sm:py-20 lg:py-24">
+        {/* 5. Milestones Timeline (Horizontal Executive Roadmap) */}
+        <section className="py-16 sm:py-20 lg:py-24 overflow-hidden">
           <div className="max-w-[1720px] 2xl:max-w-[1840px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16">
-            <div className="max-w-3xl mb-14">
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-700">
-                Growth & Trajectory
-              </span>
-              <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-forest tracking-tight mt-2">
-                Milestones That Shaped Our Clean Energy Legacy
-              </h2>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest/5 text-forest text-xs font-semibold uppercase tracking-wider mb-3">
+                  <TrendingUp size={13} className="text-emerald-700" />
+                  <span>Growth & Trajectory</span>
+                </div>
+                <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-forest tracking-tight">
+                  Milestones That Shaped Our Clean Energy Legacy
+                </h2>
+              </div>
+              <p className="text-text-muted text-xs sm:text-sm max-w-md leading-relaxed">
+                From pioneering modular rooftop ballasting to engineering multi-megawatt microgrids and autonomous AI grid dispatch.
+              </p>
             </div>
 
-            <div className="relative border-l-2 border-forest/15 ml-4 sm:ml-8 space-y-12 pb-4">
-              {timeline.map((item, idx) => (
-                <div key={idx} className="relative pl-8 sm:pl-10 group">
-                  {/* Glowing Node */}
-                  <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-forest border-4 border-offwhite group-hover:bg-lime group-hover:scale-125 transition-all duration-300" />
-                  
-                  <div className="inline-block font-heading font-extrabold text-xs sm:text-sm px-3 py-1 rounded-full bg-lime text-forest mb-2">
-                    {item.year}
-                  </div>
-                  <h3 className="font-heading font-bold text-xl sm:text-2xl text-forest group-hover:text-emerald-700 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-text-secondary text-base max-w-2xl leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
+            {/* Horizontal Timeline Track & Cards Grid */}
+            <div className="relative">
+              {/* Continuous Connected Progress Track Bar (Desktop) */}
+              <div className="hidden lg:block absolute top-7 left-12 right-12 h-1 bg-border-soft z-0">
+                <div className="h-full bg-gradient-to-r from-forest via-emerald-600 to-lime w-full rounded-full" />
+              </div>
+
+              {/* 5-Column Horizontal Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
+                {timeline.map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className={`group flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-white border transition-all duration-300 relative hover:-translate-y-2 hover:shadow-2xl ${
+                        item.isCurrent
+                          ? "border-lime/80 shadow-lg ring-1 ring-lime/40"
+                          : "border-border-soft hover:border-lime/60"
+                      }`}
+                    >
+                      {/* Top Node Connector Indicator */}
+                      <div className="flex items-center justify-between mb-5">
+                        {/* Year Badge */}
+                        <div className="flex items-center gap-2">
+                          <div
+                            className={`w-3.5 h-3.5 rounded-full border-2 transition-all duration-300 ${
+                              item.isCurrent
+                                ? "bg-lime border-forest ring-4 ring-lime/40"
+                                : "bg-forest border-white group-hover:bg-lime"
+                            }`}
+                          />
+                          <span className="font-heading font-extrabold text-2xl text-forest group-hover:text-emerald-700 transition-colors">
+                            {item.year}
+                          </span>
+                        </div>
+
+                        {/* Phase Tag */}
+                        <span
+                          className={`text-[10px] font-heading font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${
+                            item.isCurrent
+                              ? "bg-lime text-forest font-extrabold"
+                              : "bg-[#F7F8F2] text-text-muted border border-border-soft/60"
+                          }`}
+                        >
+                          {item.phase}
+                        </span>
+                      </div>
+
+                      {/* Middle Content */}
+                      <div className="flex-1">
+                        <div className="w-10 h-10 rounded-2xl bg-forest/5 text-forest group-hover:bg-forest group-hover:text-lime flex items-center justify-center mb-4 transition-colors duration-300">
+                          <Icon size={18} />
+                        </div>
+
+                        <h3 className="font-heading font-bold text-base sm:text-lg text-forest group-hover:text-emerald-700 transition-colors mb-2 leading-snug">
+                          {item.title}
+                        </h3>
+
+                        <p className="text-text-secondary text-xs sm:text-sm leading-relaxed mb-4">
+                          {item.desc}
+                        </p>
+                      </div>
+
+                      {/* Bottom Metric Pill */}
+                      <div className="pt-4 border-t border-border-soft/60">
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F7F8F2] border border-border-soft/60 text-[11px] font-heading font-bold text-forest group-hover:border-lime/50 transition-colors w-full justify-between">
+                          <span className="text-text-muted text-[10px]">{item.tag}</span>
+                          <span className="text-emerald-700 font-extrabold text-[11px]">{item.metric}</span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
