@@ -109,14 +109,14 @@ export function Navbar({ className = "" }: NavbarProps) {
 
               {/* Wide Mega-Menu Dropdown with Hover Bridge */}
               {solutionsOpen && (
-                <div className="absolute top-full left-0 pt-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="absolute top-full left-0 pt-7 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                   {/* Invisible hover bridge connecting trigger to menu */}
-                  <div className="absolute -top-3 inset-x-0 h-4 pointer-events-auto" />
+                  <div className="absolute -top-3 inset-x-0 h-11 pointer-events-auto" />
                   
                   <div
                     className={`w-[680px] xl:w-[740px] rounded-3xl p-5 shadow-2xl transition-all ${
                       isScrolled
-                        ? "bg-white/98 backdrop-blur-2xl border border-black/10 text-forest shadow-[0_20px_50px_rgba(0,0,0,0.12)]"
+                        ? "bg-white/98 backdrop-blur-2xl border border-black/10 text-forest shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
                         : "bg-[#042A1F]/98 backdrop-blur-3xl border border-white/20 text-white shadow-[0_25px_60px_rgba(0,0,0,0.45)]"
                     }`}
                   >
