@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BrightlyLogoIcon } from "@/components/icons/brand-icons";
 import { navigation, ctaText } from "@/lib/site-config";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
@@ -13,6 +14,7 @@ interface NavbarProps {
 export function Navbar({ className = "" }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className={`w-full pt-3 sm:pt-4 pb-2 px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 max-w-[1720px] 2xl:max-w-[1840px] mx-auto relative z-30 ${className}`}>
@@ -33,7 +35,10 @@ export function Navbar({ className = "" }: NavbarProps) {
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8 2xl:gap-10">
           {navigation.map((item) => {
-            const isHome = item.href === "/";
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(item.href + "/");
             const hasChildren = Boolean(item.children);
 
             if (hasChildren) {
@@ -44,16 +49,21 @@ export function Navbar({ className = "" }: NavbarProps) {
                   onMouseEnter={() => setSolutionsOpen(true)}
                   onMouseLeave={() => setSolutionsOpen(false)}
                 >
-                  <button
-                    type="button"
-                    className="flex items-center gap-1.5 text-forest/90 hover:text-forest font-medium text-xs xl:text-sm transition-colors py-1 focus-visible:outline-none cursor-pointer"
+                  <Link
+                    href={item.href}
+                    className={`flex items-center gap-1.5 font-medium text-xs xl:text-sm transition-colors py-1 focus-visible:outline-none cursor-pointer relative ${
+                      isActive ? "text-forest font-semibold" : "text-forest/80 hover:text-forest"
+                    }`}
                   >
                     <span>{item.label}</span>
                     <ChevronDown
                       size={13}
                       className="text-forest/70 transition-transform duration-200 group-hover:rotate-180"
                     />
-                  </button>
+                    {isActive && (
+                      <span className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-forest rounded-full mx-auto w-5/6" />
+                    )}
+                  </Link>
 
                   {/* Dropdown Menu */}
                   {solutionsOpen && (
@@ -77,10 +87,12 @@ export function Navbar({ className = "" }: NavbarProps) {
               <Link
                 key={item.label}
                 href={item.href}
-                className="relative text-forest/90 hover:text-forest font-medium text-xs xl:text-sm transition-colors py-1"
+                className={`relative font-medium text-xs xl:text-sm transition-colors py-1 ${
+                  isActive ? "text-forest font-semibold" : "text-forest/80 hover:text-forest"
+                }`}
               >
                 {item.label}
-                {isHome && (
+                {isActive && (
                   <span className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-forest rounded-full mx-auto w-5/6" />
                 )}
               </Link>
