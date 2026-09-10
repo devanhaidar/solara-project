@@ -1,9 +1,7 @@
-"use client";
-
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { Star } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import * as motion from "framer-motion/client";
+import { Star } from "lucide-react";
+import Image from "next/image";
 
 const testimonials = [
   {

@@ -4,7 +4,7 @@ import Image from "next/image";
  * Solara Energy Brand Icons & Graphic Elements
  */
 
-export function BrightlyLogoIcon({ className = "w-8 h-8 sm:w-9 sm:h-9" }: { className?: string }) {
+export function SolaraLogoIcon({ className = "w-8 h-8 sm:w-9 sm:h-9" }: { className?: string }) {
   return (
     <div
       className={`relative overflow-hidden bg-white rounded-xl shadow-xs border border-border-soft/60 shrink-0 flex items-center justify-center ${className}`}
@@ -21,7 +21,6 @@ export function BrightlyLogoIcon({ className = "w-8 h-8 sm:w-9 sm:h-9" }: { clas
   );
 }
 
-export const SolaraLogoIcon = BrightlyLogoIcon;
 
 export function SolarWindIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (

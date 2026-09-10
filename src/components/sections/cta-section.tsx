@@ -1,9 +1,7 @@
-"use client";
-
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Award, Zap, Sparkles } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import * as motion from "framer-motion/client";
+import { ArrowRight, Award, ShieldCheck, Sparkles, Zap } from "lucide-react";
+import Link from "next/link";
 
 export function FinalCtaSection() {
   return (

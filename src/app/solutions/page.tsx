@@ -1,22 +1,18 @@
-import Image from "next/image";
-import Link from "next/link";
-import { PageHeader } from "@/components/ui/page-header";
 import { Footer } from "@/components/navigation/footer";
 import { FinalCtaSection } from "@/components/sections/cta-section";
 import { SavingsCalculator } from "@/components/solutions/savings-calculator";
+import { PageHeader } from "@/components/ui/page-header";
 import {
+  ArrowRight,
+  BatteryCharging,
+  CheckCircle2,
+  Cpu,
   Sun,
   Wind,
-  BatteryCharging,
-  Cpu,
-  ArrowRight,
-  CheckCircle2,
-  Layers,
-  Sparkles,
-  BarChart3,
-  ShieldAlert,
 } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Renewable Energy Solutions",
@@ -199,14 +195,14 @@ export default function SolutionsPage() {
                         {sol.title}
                       </h3>
 
-                      <p className="text-text-secondary text-sm sm:text-base leading-relaxed mb-6">
+                      <p className="text-inherit text-sm sm:text-base leading-relaxed mb-6">
                         {sol.description}
                       </p>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-8">
                         {sol.highlights.map((feat, i) => (
                           <div key={i} className="flex items-start gap-2 text-xs sm:text-sm text-forest font-medium">
-                            <CheckCircle2 size={16} className="text-lime-dark shrink-0 mt-0.5" />
+                            <CheckCircle2 size={16} className="text-inherit shrink-0 mt-0.5" />
                             <span>{feat}</span>
                           </div>
                         ))}
@@ -265,14 +261,14 @@ export default function SolutionsPage() {
                       <td className="p-4 sm:p-5 font-heading font-bold text-forest">
                         {row.tech}
                       </td>
-                      <td className="p-4 sm:p-5 text-text-secondary">{row.capacity}</td>
+                      <td className="p-4 sm:p-5 text-inherit">{row.capacity}</td>
                       <td className="p-4 sm:p-5 font-semibold text-emerald-700">{row.payback}</td>
                       <td className="p-4 sm:p-5">
                         <span className="inline-block px-2.5 py-1 rounded-full bg-lime-soft text-forest font-bold text-xs">
                           {row.gridIndependence}
                         </span>
                       </td>
-                      <td className="p-4 sm:p-5 text-text-secondary">{row.idealFor}</td>
+                      <td className="p-4 sm:p-5 text-inherit">{row.idealFor}</td>
                     </tr>
                   ))}
                 </tbody>

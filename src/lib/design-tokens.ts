@@ -1,5 +1,5 @@
 /**
- * Brightly Design System — Color Tokens
+ * Solara Design System — Color Tokens
  *
  * Single source of truth for all color values used across the application.
  * These mirror the CSS custom properties defined in globals.css

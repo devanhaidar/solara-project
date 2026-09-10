@@ -1,19 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
-  TrendingDown,
-  Globe2,
-  ShieldCheck,
   Building,
   Check,
+  Globe2,
+  ShieldCheck,
+  TrendingDown,
   Zap,
 } from "lucide-react";
-import { fadeInUp, staggerContainer } from "@/lib/motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface BenefitItem {
   id: string;
@@ -166,6 +166,8 @@ export function WhyRenewableSection() {
       {/* Side-by-Side Interactive Showcase */}
       <div
         className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-12 items-center"
+        onFocus={() => setIsPaused(true)}
+        onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setIsPaused(false); }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -178,6 +180,15 @@ export function WhyRenewableSection() {
             return (
               <div
                 key={item.id}
+                role="button"
+                tabIndex={0}
+                aria-pressed={isActive}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setActiveTab(idx);
+                  }
+                }}
                 onClick={() => setActiveTab(idx)}
                 className={`relative rounded-[20px] sm:rounded-[24px] p-4.5 sm:p-5 cursor-pointer transition-all duration-300 border text-left group ${isActive
                     ? "bg-forest border-forest shadow-lg scale-[1.01]"

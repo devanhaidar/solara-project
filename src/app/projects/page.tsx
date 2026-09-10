@@ -1,8 +1,7 @@
-import { PageHeader } from "@/components/ui/page-header";
 import { Footer } from "@/components/navigation/footer";
-import { FinalCtaSection } from "@/components/sections/cta-section";
 import { ProjectsGallery } from "@/components/projects/projects-gallery";
-import { ShieldCheck, Zap, Award, Sparkles } from "lucide-react";
+import { FinalCtaSection } from "@/components/sections/cta-section";
+import { PageHeader } from "@/components/ui/page-header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

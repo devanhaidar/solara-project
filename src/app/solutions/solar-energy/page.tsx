@@ -1,20 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import { PageHeader } from "@/components/ui/page-header";
 import { Footer } from "@/components/navigation/footer";
 import { FinalCtaSection } from "@/components/sections/cta-section";
+import { PageHeader } from "@/components/ui/page-header";
 import {
-  Sun,
-  ShieldCheck,
   Zap,
-  TrendingDown,
-  CheckCircle2,
-  Cpu,
-  BarChart,
-  ArrowRight,
-  Layers,
 } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Commercial & Industrial Solar Energy Solutions",
@@ -80,7 +71,7 @@ export default function SolarEnergyPage() {
                 <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-forest tracking-tight mt-2 leading-tight">
                   Maximizing Photovoltaic Yield Under Every Microclimate
                 </h2>
-                <p className="mt-5 text-text-secondary text-base sm:text-lg leading-relaxed font-body">
+                <p className="mt-5 text-inherit text-base sm:text-lg leading-relaxed font-body">
                   Solara solar arrays utilize bifacial N-type cells that absorb reflected albedo light from both sides of the panel, generating up to 20% more power than conventional single-sided modules. Every project is paired with automated 1500V DC smart string inverters to eliminate single points of failure.
                 </p>
 
@@ -140,13 +131,13 @@ export default function SolarEnergyPage() {
                     <h3 className="font-heading font-bold text-xl text-forest mt-2 mb-3">
                       {tier.name}
                     </h3>
-                    <p className="text-text-secondary text-sm leading-relaxed mb-6">
+                    <p className="text-inherit text-sm leading-relaxed mb-6">
                       {tier.desc}
                     </p>
                   </div>
                   <div className="pt-4 border-t border-border-soft">
                     <span className="text-xs font-semibold text-forest flex items-center gap-1.5">
-                      <Zap size={14} className="text-lime-dark" />
+                      <Zap size={14} className="text-inherit" />
                       {tier.benefit}
                     </span>
                   </div>
@@ -174,7 +165,7 @@ export default function SolarEnergyPage() {
                   <div className="sm:col-span-4 font-heading font-bold text-forest text-sm sm:text-base">
                     {spec.label}
                   </div>
-                  <div className="sm:col-span-8 text-text-secondary text-sm sm:text-base">
+                  <div className="sm:col-span-8 text-inherit text-sm sm:text-base">
                     {spec.value}
                   </div>
                 </div>

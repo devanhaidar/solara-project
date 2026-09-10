@@ -1,131 +1,86 @@
-/**
- * Brightly — Site Configuration
- *
- * Centralized site-wide constants: navigation, company info,
- * statistics, and content data.
- */
-
-export const siteConfig = {
-  name: "Solara Energy",
-  tagline: "Green & Renewable Energy Solutions",
-  description:
-    "Smart renewable-energy solutions designed to reduce costs, improve energy independence, and support a cleaner planet.",
-  url: "https://solara.energy",
-} as const;
-
-/* ---- Navigation ---- */
-
-export interface NavItem {
-  label: string;
-  href: string;
-  children?: NavItem[];
-}
-
-export const navigation: NavItem[] = [
-  { label: "Home", href: "/" },
-  {
-    label: "Solutions",
-    href: "/solutions",
-    children: [
-      { label: "Solar Energy", href: "/solutions/solar-energy" },
-      { label: "Wind Energy", href: "/solutions/wind-energy" },
-      { label: "Energy Storage", href: "/solutions/energy-storage" },
-      { label: "Smart Energy Management", href: "/solutions/smart-energy" },
-    ],
-  },
-  { label: "Projects", href: "/projects" },
-  { label: "About Us", href: "/about" },
-  { label: "Blog", href: "/insights" },
-  { label: "Contact", href: "/contact" },
-];
-
+/** Solara — rendered navigation data. Demo content for the slicing project. */
 export const ctaText = "Get Free Consultation";
 
-/* ---- Company Stats ---- */
-
-export interface Stat {
-  value: string;
-  label: string;
-  suffix?: string;
-}
-
-export const companyStats: Stat[] = [
+export const companyStats = [
   { value: "250", suffix: "+", label: "Projects Completed" },
   { value: "120", suffix: " MW+", label: "Clean Energy Generated" },
   { value: "98", suffix: "%", label: "Client Satisfaction" },
-];
+] as const;
 
-export const impactStats: Stat[] = [
-  { value: "120", suffix: " MW+", label: "Renewable Energy Generated" },
-  { value: "85000", suffix: "+", label: "Tons CO₂ Reduced" },
-  { value: "250", suffix: "+", label: "Energy Projects" },
-  { value: "40", suffix: "%", label: "Average Energy Cost Reduction" },
-];
-
-/* ---- Solutions ---- */
-
-export interface Solution {
-  title: string;
-  description: string;
-  href: string;
-  icon: string;
-}
-
-export const solutions: Solution[] = [
+export const solutionsSubmenu = [
   {
-    title: "Solar Energy",
-    description:
-      "Commercial, industrial, rooftop, and utility-scale solar solutions designed to maximize your energy independence.",
+    label: "Solar Energy Systems",
+    category: "Photovoltaics",
     href: "/solutions/solar-energy",
-    icon: "solar-energy",
+    desc: "Commercial rooftop, carport & utility-scale bifacial PV arrays.",
+    image: "/images/solutions-solar.jpg",
   },
   {
-    title: "Wind Energy",
-    description:
-      "Scalable wind-power solutions for businesses seeking clean, reliable, and cost-effective energy generation.",
+    label: "Wind Generation",
+    category: "Kinetic Power",
     href: "/solutions/wind-energy",
-    icon: "wind-energy",
+    desc: "Direct-drive low-acoustic onshore turbines for 24/7 power.",
+    image: "/images/solutions-wind.jpg",
   },
   {
-    title: "Energy Storage",
-    description:
-      "Advanced battery storage systems for backup power, peak shaving, and energy optimization.",
+    label: "Battery Storage (BESS)",
+    category: "Energy Storage",
     href: "/solutions/energy-storage",
-    icon: "energy-storage",
+    desc: "Sub-16ms backup islanding & peak tariff shaving systems.",
+    image: "/images/solutions-storage.jpg",
   },
   {
-    title: "Smart Energy Management",
-    description:
-      "Intelligent monitoring and analytics platform for real-time energy insights and predictive maintenance.",
+    label: "Smart Energy Management",
+    category: "Solara OS Telemetry",
     href: "/solutions/smart-energy",
-    icon: "smart-energy",
+    desc: "Autonomous AI load balancing & real-time grid orchestration.",
+    image: "/images/solutions-smart-iot.jpg",
   },
-];
-
-/* ---- Footer Links ---- */
+] as const;
 
 export const footerLinks = {
   solutions: [
-    { label: "Solar Energy", href: "/solutions/solar-energy" },
-    { label: "Wind Energy", href: "/solutions/wind-energy" },
-    { label: "Energy Storage", href: "/solutions/energy-storage" },
-    { label: "Smart Energy", href: "/solutions/smart-energy" },
+    {
+      href: "/solutions/solar-energy",
+      label: "Solar Energy Systems"
+    },
+    {
+      href: "/solutions/wind-energy",
+      label: "Wind Power Generation"
+    },
+    {
+      href: "/solutions/energy-storage",
+      label: "Battery Storage (BESS)"
+    },
+    {
+      href: "/solutions/smart-energy",
+      label: "Smart IoT Energy Management"
+    },
+    {
+      href: "/solutions",
+      label: "Commercial Microgrids"
+    }
   ],
   company: [
-    { label: "About Us", href: "/about" },
-    { label: "Projects", href: "/projects" },
-    { label: "Careers", href: "/careers" },
-    { label: "Contact", href: "/contact" },
-  ],
-  resources: [
-    { label: "Insights", href: "/insights" },
-    { label: "Sustainability", href: "/sustainability" },
-    { label: "FAQ", href: "/faq" },
-  ],
+    {
+      href: "/about",
+      label: "About Solara"
+    },
+    {
+      href: "/projects",
+      label: "Featured Projects"
+    },
+    {
+      href: "/about",
+      label: "Leadership & Engineering"
+    },
+    {
+      href: "/contact",
+      label: "Careers (We're Hiring)"
+    },
+    {
+      href: "/contact",
+      label: "Press & Media Kit"
+    }
+  ]
 } as const;
-
-export const socialLinks = [
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "YouTube", href: "https://youtube.com" },
-] as const;

@@ -1,18 +1,16 @@
-"use client";
-
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer } from "@/lib/motion";
+import * as motion from "framer-motion/client";
 import {
+  Activity,
   ArrowRight,
+  CheckCircle2,
   ClipboardCheck,
+  Clock,
   Compass,
   FileCheck,
   Wrench,
-  Activity,
-  CheckCircle2,
-  Clock,
 } from "lucide-react";
-import { fadeInUp, staggerContainer } from "@/lib/motion";
+import Link from "next/link";
 
 const steps = [
   {
@@ -122,7 +120,7 @@ export function HowItWorksSection() {
               <div>
                 {/* Top Row: Number + Duration Chip */}
                 <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="font-heading font-extrabold text-2xl sm:text-3xl text-forest/20 group-hover:text-lime-dark text-[#68A326] transition-colors">
+                  <span className="font-heading font-extrabold text-2xl sm:text-3xl text-forest/20 group-hover:text-inherit text-[#68A326] transition-colors">
                     {step.num}
                   </span>
                   <span className="inline-flex items-center gap-1 text-[10.5px] font-bold text-forest/75 bg-forest/5 px-2 py-0.5 rounded-full">

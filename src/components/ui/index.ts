@@ -1,9 +1,9 @@
 /**
- * Brightly UI Components — Barrel Export
+ * Solara UI Components — Barrel Export
  */
 
 export { Button } from "./button";
-export type { ButtonProps, ButtonVariant } from "./button";
+export type { ButtonProps,ButtonVariant } from "./button";
 
 export { Badge } from "./badge";
 

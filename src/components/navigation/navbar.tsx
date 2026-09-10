@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { SolaraLogoIcon } from "@/components/icons/brand-icons";
+import { ctaText, solutionsSubmenu } from "@/lib/site-config";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BrightlyLogoIcon } from "@/components/icons/brand-icons";
-import { ctaText } from "@/lib/site-config";
-import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface NavbarProps {
   className?: string;
@@ -32,36 +32,6 @@ export function Navbar({ className = "" }: NavbarProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const solutionsSubmenu = [
-    {
-      label: "Solar Energy Systems",
-      category: "Photovoltaics",
-      href: "/solutions/solar-energy",
-      desc: "Commercial rooftop, carport & utility-scale bifacial PV arrays.",
-      image: "/images/solutions-solar.jpg",
-    },
-    {
-      label: "Wind Generation",
-      category: "Kinetic Power",
-      href: "/solutions/wind-energy",
-      desc: "Direct-drive low-acoustic onshore turbines for 24/7 power.",
-      image: "/images/solutions-wind.jpg",
-    },
-    {
-      label: "Battery Storage (BESS)",
-      category: "Energy Storage",
-      href: "/solutions/energy-storage",
-      desc: "Sub-16ms backup islanding & peak tariff shaving systems.",
-      image: "/images/solutions-storage.jpg",
-    },
-    {
-      label: "Smart Energy Management",
-      category: "Solara OS Telemetry",
-      href: "/solutions/smart-energy",
-      desc: "Autonomous AI load balancing & real-time grid orchestration.",
-      image: "/images/solutions-smart-iot.jpg",
-    },
-  ];
 
   const isSolutionsActive = pathname.startsWith("/solutions");
   const isProjectsActive = pathname === "/projects";
@@ -71,7 +41,7 @@ export function Navbar({ className = "" }: NavbarProps) {
   return (
     <div className={`fixed top-4 sm:top-6 inset-x-0 z-50 w-full max-w-[1720px] 2xl:max-w-[1840px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 pointer-events-none transition-all duration-300 ${className}`}>
       <header
-        className={`w-full pointer-events-auto rounded-full transition-all duration-300 ease-in-out px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 min-h-[64px] sm:min-h-[70px] lg:min-h-[74px] flex items-center ${
+        className={`relative w-full pointer-events-auto rounded-full transition-all duration-300 ease-in-out px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 min-h-[64px] sm:min-h-[70px] lg:min-h-[74px] flex items-center ${
           isScrolled
             ? "bg-white text-forest shadow-[0_12px_40px_rgba(0,0,0,0.1)] border border-black/10 backdrop-blur-md"
             : "bg-black/40 text-white shadow-[0_12px_40px_rgba(0,0,0,0.25)] border border-white/25 backdrop-blur-xl"
@@ -84,10 +54,34 @@ export function Navbar({ className = "" }: NavbarProps) {
             <div
               className="relative"
               onMouseEnter={() => setSolutionsOpen(true)}
-              onMouseLeave={() => setSolutionsOpen(false)}
+              onMouseLeave={(event) => {
+                if (!event.currentTarget.contains(document.activeElement)) setSolutionsOpen(false);
+              }}
+              onFocus={() => setSolutionsOpen(true)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) setSolutionsOpen(false);
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Escape") {
+                  event.preventDefault();
+                  event.currentTarget.querySelector<HTMLAnchorElement>("a")?.focus();
+                  setSolutionsOpen(false);
+                }
+              }}
+              onClick={(event) => {
+                if ((event.target as Element).closest("a")) setSolutionsOpen(false);
+              }}
             >
               <Link
                 href="/solutions"
+                aria-expanded={solutionsOpen}
+                aria-controls={solutionsOpen ? "solutions-submenu" : undefined}
+                onKeyDown={(event) => {
+                  if (event.key === "ArrowDown" || event.key === " ") {
+                    event.preventDefault();
+                    setSolutionsOpen(true);
+                  }
+                }}
                 className={`flex items-center gap-1.5 text-xs sm:text-[13px] xl:text-sm font-heading font-bold tracking-wider transition-all py-2 cursor-pointer ${
                   isSolutionsActive
                     ? isScrolled
@@ -109,7 +103,7 @@ export function Navbar({ className = "" }: NavbarProps) {
 
               {/* Wide Mega-Menu Dropdown with Hover Bridge */}
               {solutionsOpen && (
-                <div className="absolute top-full left-0 pt-7 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div id="solutions-submenu" className="absolute top-full left-0 pt-7 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                   {/* Invisible hover bridge connecting trigger to menu */}
                   <div className="absolute -top-3 inset-x-0 h-11 pointer-events-auto" />
                   
@@ -186,7 +180,7 @@ export function Navbar({ className = "" }: NavbarProps) {
 
                     {/* Bottom CTA Banner */}
                     <div className={`mt-4 pt-3.5 border-t flex items-center justify-between text-xs ${
-                      isScrolled ? "border-border-soft text-text-secondary" : "border-white/10 text-white/70"
+                      isScrolled ? "border-border-soft text-inherit" : "border-white/10 text-white/70"
                     }`}>
                       <span className="flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-lime animate-pulse" />
@@ -194,7 +188,7 @@ export function Navbar({ className = "" }: NavbarProps) {
                       </span>
                       <Link
                         href="/contact"
-                        className="font-heading font-bold text-lime-dark hover:underline flex items-center gap-1"
+                        className="font-heading font-bold text-inherit hover:underline flex items-center gap-1"
                       >
                         <span>Schedule Audit</span>
                         <ArrowRight size={12} />
@@ -242,10 +236,10 @@ export function Navbar({ className = "" }: NavbarProps) {
           <div className="flex items-center justify-center">
             <Link
               href="/"
-              className="flex items-center gap-2.5 sm:gap-3 group focus-visible:outline-none"
+              className="flex items-center gap-2.5 sm:gap-3 group focus-visible:outline-lime"
             >
               <div className="p-1.5 rounded-xl bg-white shadow-xs group-hover:scale-105 transition-transform duration-200">
-                <BrightlyLogoIcon className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" />
+                <SolaraLogoIcon className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg" />
               </div>
               <span
                 className={`font-heading font-extrabold text-xl sm:text-2xl tracking-tight transition-colors ${
@@ -290,12 +284,15 @@ export function Navbar({ className = "" }: NavbarProps) {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-full transition-colors focus-visible:outline-none cursor-pointer ${
+            className={`lg:hidden p-2 rounded-full transition-colors focus-visible:outline-lime cursor-pointer ${
               isScrolled
                 ? "text-forest hover:bg-forest/5"
                 : "text-white hover:bg-white/10"
             }`}
+            id="mobile-menu-toggle"
             aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls={mobileMenuOpen ? "mobile-navigation" : undefined}
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -304,7 +301,14 @@ export function Navbar({ className = "" }: NavbarProps) {
         {/* Mobile Dropdown Menu Card */}
         {mobileMenuOpen && (
           <div
-            className={`lg:hidden mt-3 rounded-3xl p-5 shadow-2xl border flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-200 ${
+            id="mobile-navigation"
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                setMobileMenuOpen(false);
+                document.getElementById("mobile-menu-toggle")?.focus();
+              }
+            }}
+            className={`absolute top-full inset-x-0 max-h-[calc(100dvh-120px)] overflow-y-auto lg:hidden mt-3 rounded-3xl p-5 shadow-2xl border flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-200 ${
               isScrolled
                 ? "bg-white text-forest border-border-soft"
                 : "bg-[#042A1F]/98 backdrop-blur-2xl text-white border-white/20"

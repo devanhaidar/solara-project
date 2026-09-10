@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { ArrowRight, Calculator, Sparkles, TrendingDown } from "lucide-react";
 import Link from "next/link";
-import { ArrowRight, Calculator, Check, Sparkles, TrendingDown, Zap } from "lucide-react";
+import { useState } from "react";
 
 export function SavingsCalculator() {
   const [monthlySpend, setMonthlySpend] = useState(15000); // USD
@@ -46,6 +46,7 @@ export function SavingsCalculator() {
               {(["industrial", "commercial", "agricultural"] as const).map((type) => (
                 <button
                   key={type}
+                  aria-pressed={facilityType === type}
                   type="button"
                   onClick={() => setFacilityType(type)}
                   className={`py-2 px-3 rounded-xl text-xs sm:text-sm font-heading font-bold capitalize transition-all ${
@@ -63,14 +64,15 @@ export function SavingsCalculator() {
           {/* Slider for Monthly Spend */}
           <div>
             <div className="flex justify-between items-center mb-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-offwhite/70">
+              <label htmlFor="monthly-spend" className="text-xs font-bold uppercase tracking-wider text-offwhite/70">
                 Current Monthly Electric Spend
               </label>
               <span className="font-heading font-extrabold text-lg sm:text-xl text-lime">
-                ${monthlySpend.toLocaleString()} / mo
+                ${monthlySpend.toLocaleString("en-US")} / mo
               </span>
             </div>
             <input
+              id="monthly-spend"
               type="range"
               min={3000}
               max={100000}
@@ -95,7 +97,7 @@ export function SavingsCalculator() {
                 Estimated Annual Savings
               </div>
               <div className="font-heading font-extrabold text-3xl sm:text-4xl text-lime mt-1">
-                ${annualSavings.toLocaleString()}
+                ${annualSavings.toLocaleString("en-US")}
                 <span className="text-xs text-offwhite/70 font-normal ml-1.5">/ year</span>
               </div>
             </div>
@@ -133,7 +135,7 @@ export function SavingsCalculator() {
 
           <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 text-xs text-offwhite/80">
             <Sparkles size={16} className="text-lime shrink-0" />
-            <span>Includes federal tax credits (ITC) and standard peak demand tariff mitigation.</span>
+            <span>Illustrative demo only; fixed assumptions, not an engineering or tax estimate.</span>
           </div>
 
           <Link

@@ -1,16 +1,14 @@
-"use client";
-
+import {
+  CleanPowerLeafIcon,
+  EnergySavingsChartIcon,
+  LeafSprout,
+  SolarWindIcon,
+} from "@/components/icons/brand-icons";
+import { fadeInUp, staggerContainer, staggerContainerSlow } from "@/lib/motion";
+import * as motion from "framer-motion/client";
+import { ArrowRight, Globe, Leaf, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  SolarWindIcon,
-  EnergySavingsChartIcon,
-  CleanPowerLeafIcon,
-  LeafSprout,
-} from "@/components/icons/brand-icons";
-import { ArrowRight, Leaf, ShieldCheck, Globe } from "lucide-react";
-import { fadeInUp, staggerContainer, staggerContainerSlow } from "@/lib/motion";
 
 export function HeroSection() {
   return (

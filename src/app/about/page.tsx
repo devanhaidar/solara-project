@@ -1,23 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
-import { PageHeader } from "@/components/ui/page-header";
 import { Footer } from "@/components/navigation/footer";
 import { FinalCtaSection } from "@/components/sections/cta-section";
+import { PageHeader } from "@/components/ui/page-header";
 import {
-  ShieldCheck,
-  Zap,
-  Award,
-  Users,
-  Compass,
   CheckCircle2,
-  TrendingUp,
-  Leaf,
-  Globe2,
+  Compass,
   Cpu,
-  ArrowRight,
-  Sparkles,
+  Leaf,
+  ShieldCheck,
+  TrendingUp,
+  Zap,
 } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -192,14 +186,14 @@ export default function AboutPage() {
               {/* Left Column Text */}
               <div className="lg:col-span-6 flex flex-col justify-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest/5 text-forest text-xs font-semibold uppercase tracking-wider mb-4">
-                  <Compass size={14} className="text-lime-dark" />
+                  <Compass size={14} className="text-inherit" />
                   <span>Our Heritage & Purpose</span>
                 </div>
                 <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-forest tracking-tight leading-[1.18]">
                   From bespoke micro-inverters to{" "}
                   <span className="text-emerald-700">gigawatt clean capacity.</span>
                 </h2>
-                <div className="mt-6 space-y-4 text-text-secondary text-base sm:text-lg leading-relaxed font-body">
+                <div className="mt-6 space-y-4 text-inherit text-base sm:text-lg leading-relaxed font-body">
                   <p>
                     Solara Energy was founded with an unyielding conviction: that the global transition to renewable energy requires engineering that is as robust, predictable, and bankable as conventional thermal generation.
                   </p>
@@ -282,7 +276,7 @@ export default function AboutPage() {
                       <h3 className="font-heading font-bold text-xl text-forest group-hover:text-white mb-3">
                         {pillar.title}
                       </h3>
-                      <p className="text-text-secondary group-hover:text-offwhite/80 text-sm leading-relaxed">
+                      <p className="text-inherit group-hover:text-offwhite/80 text-sm leading-relaxed">
                         {pillar.description}
                       </p>
                     </div>
@@ -308,7 +302,7 @@ export default function AboutPage() {
                   Building a Cleaner Future, One Milestone at a Time
                 </h2>
 
-                <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
+                <p className="text-inherit text-base sm:text-lg leading-relaxed">
                   From our first 2.5 MW industrial microgrid pilot to powering over 250+ enterprise hubs and utility portfolios, explore how Solara engineered the modern clean energy transition.
                 </p>
 
@@ -355,7 +349,7 @@ export default function AboutPage() {
                       </h3>
 
                       {/* Description */}
-                      <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-xl">
+                      <p className="text-inherit text-base sm:text-lg leading-relaxed max-w-xl">
                         {item.desc}
                       </p>
 
@@ -388,7 +382,7 @@ export default function AboutPage() {
                   The Architects Behind Solara
                 </h2>
               </div>
-              <p className="text-text-secondary text-sm sm:text-base max-w-md leading-relaxed">
+              <p className="text-inherit text-sm sm:text-base max-w-md leading-relaxed">
                 Led by pioneers in electrical grid engineering, power electronics, distributed energy software, and sustainable infrastructure finance.
               </p>
             </div>

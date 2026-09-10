@@ -1,18 +1,18 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
+  BatteryCharging,
   MapPin,
-  Zap,
   Sun,
   Wind,
-  BatteryCharging,
+  Zap,
 } from "lucide-react";
-import { fadeInUp, staggerContainer } from "@/lib/motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 type ProjectCategory = "all" | "solar" | "wind" | "hybrid";
 
@@ -145,6 +145,8 @@ export function FeaturedProjectsSection() {
             return (
               <button
                 key={tab.id}
+                type="button"
+                aria-pressed={isActive}
                 onClick={() => setActiveFilter(tab.id)}
                 className={`inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-heading font-bold transition-all duration-200 cursor-pointer ${
                   isActive

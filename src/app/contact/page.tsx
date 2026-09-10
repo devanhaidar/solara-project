@@ -1,17 +1,16 @@
-import Image from "next/image";
-import { PageHeader } from "@/components/ui/page-header";
-import { Footer } from "@/components/navigation/footer";
 import { ContactForm } from "@/components/contact/contact-form";
+import { Footer } from "@/components/navigation/footer";
+import { PageHeader } from "@/components/ui/page-header";
 import {
+  Clock,
+  HelpCircle,
+  Mail,
   MapPin,
   Phone,
-  Mail,
-  Clock,
   ShieldCheck,
-  Zap,
-  HelpCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Contact & Feasibility Audit",
@@ -88,7 +87,7 @@ export default function ContactPage() {
                     Global Headquarters & Engineering Hub
                   </h4>
 
-                  <div className="space-y-4 text-xs sm:text-sm text-text-secondary">
+                  <div className="space-y-4 text-xs sm:text-sm text-inherit">
                     <div className="flex items-start gap-3">
                       <MapPin size={18} className="text-emerald-700 shrink-0 mt-0.5" />
                       <div>
@@ -166,7 +165,7 @@ export default function ContactPage() {
                       <h4 className="font-heading font-bold text-base sm:text-lg text-forest">
                         {faq.q}
                       </h4>
-                      <p className="mt-2 text-text-secondary text-xs sm:text-sm leading-relaxed">
+                      <p className="mt-2 text-inherit text-xs sm:text-sm leading-relaxed">
                         {faq.a}
                       </p>
                     </div>

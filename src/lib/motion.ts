@@ -1,5 +1,5 @@
 /**
- * Brightly — Shared Animation Variants
+ * Solara — Shared Animation Variants
  *
  * Reusable Framer Motion variants for consistent animations
  * across the entire website.

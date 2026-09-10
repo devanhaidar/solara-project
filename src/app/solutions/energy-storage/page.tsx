@@ -1,19 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import { PageHeader } from "@/components/ui/page-header";
 import { Footer } from "@/components/navigation/footer";
 import { FinalCtaSection } from "@/components/sections/cta-section";
-import {
-  BatteryCharging,
-  ShieldCheck,
-  Zap,
-  Flame,
-  CheckCircle2,
-  Cpu,
-  Clock,
-  ArrowRight,
-} from "lucide-react";
+import { PageHeader } from "@/components/ui/page-header";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Industrial Battery Energy Storage Systems (BESS)",
@@ -57,7 +46,7 @@ export default function EnergyStoragePage() {
                 <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-forest tracking-tight mt-2 leading-tight">
                   Zero Downtime. Instantaneous Sub-20ms Grid Transfer.
                 </h2>
-                <p className="mt-5 text-text-secondary text-base sm:text-lg leading-relaxed font-body">
+                <p className="mt-5 text-inherit text-base sm:text-lg leading-relaxed font-body">
                   When utility grid substations trip or brownouts occur, Solara BESS responds faster than mechanical relays can react. Within 16 milliseconds, your manufacturing lines, clean rooms, or data centers seamlessly transition to stored battery power without a single machine restart.
                 </p>
 
@@ -110,7 +99,7 @@ export default function EnergyStoragePage() {
                   <div className="sm:col-span-4 font-heading font-bold text-forest text-sm sm:text-base">
                     {spec.label}
                   </div>
-                  <div className="sm:col-span-8 text-text-secondary text-sm sm:text-base">
+                  <div className="sm:col-span-8 text-inherit text-sm sm:text-base">
                     {spec.value}
                   </div>
                 </div>

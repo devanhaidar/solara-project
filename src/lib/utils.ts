@@ -1,5 +1,5 @@
 /**
- * Brightly — Utility functions
+ * Solara — Utility functions
  *
  * Shared utility helpers used across the application.
  */

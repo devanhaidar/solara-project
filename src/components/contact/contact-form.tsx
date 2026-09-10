@@ -1,7 +1,7 @@
 "use client";
 
+import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, Send, Sparkles } from "lucide-react";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -12,7 +12,6 @@ export function ContactForm() {
     company: "",
     facilityType: "Industrial Manufacturing",
     monthlyBill: "$15,000 – $50,000 / mo",
-    timeline: "3 – 6 Months",
     solutions: ["Solar PV", "Battery BESS Storage"],
     message: "",
   });
@@ -36,18 +35,18 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="bg-forest text-offwhite p-8 sm:p-12 rounded-3xl sm:rounded-[36px] border border-white/15 text-center flex flex-col items-center justify-center min-h-[460px] shadow-2xl">
+      <div role="status" className="bg-forest text-offwhite p-8 sm:p-12 rounded-3xl sm:rounded-[36px] border border-white/15 text-center flex flex-col items-center justify-center min-h-[460px] shadow-2xl">
         <div className="w-16 h-16 rounded-full bg-lime/20 border border-lime/40 text-lime flex items-center justify-center mb-6 animate-bounce">
           <CheckCircle2 size={32} />
         </div>
         <span className="px-3 py-1 rounded-full bg-lime/15 text-lime text-xs font-bold uppercase tracking-wider mb-3">
-          Audit Request Received
+          Demo Request Preview
         </span>
         <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-white mb-3">
           Thank You, {formData.name || "Partner"}!
         </h3>
         <p className="text-offwhite/80 text-sm sm:text-base max-w-md leading-relaxed mb-6">
-          Our senior NABCEP renewable energy engineers have received your facility details. We will prepare your preliminary irradiance model and reach out within 24 business hours.
+          This is a frontend demo. Your facility details have not been sent or stored, and no consultation has been requested.
         </p>
         <button
           type="button"
@@ -81,55 +80,79 @@ export function ContactForm() {
       {/* Inputs Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+          <label htmlFor="contact-name" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
             Full Name *
           </label>
           <input
             type="text"
             required
+            id="contact-name"
+            name="name"
+            autoComplete="name"
             value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            onChange={(event) => {
+              const value = event.target.value;
+              setFormData((previous) => ({ ...previous, name: value }));
+            }}
             placeholder="Marcus Sterling"
             className="w-full px-4 py-3 rounded-xl border border-border-soft bg-[#F7F8F2] text-forest text-sm focus:outline-none focus:border-forest"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+          <label htmlFor="contact-email" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
             Corporate Email *
           </label>
           <input
             type="email"
             required
+            id="contact-email"
+            name="email"
+            autoComplete="email"
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            onChange={(event) => {
+              const value = event.target.value;
+              setFormData((previous) => ({ ...previous, email: value }));
+            }}
             placeholder="m.sterling@enterprise.com"
             className="w-full px-4 py-3 rounded-xl border border-border-soft bg-[#F7F8F2] text-forest text-sm focus:outline-none focus:border-forest"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+          <label htmlFor="contact-company" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
             Company / Organization *
           </label>
           <input
             type="text"
             required
+            id="contact-company"
+            name="company"
+            autoComplete="organization"
             value={formData.company}
-            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+            onChange={(event) => {
+              const value = event.target.value;
+              setFormData((previous) => ({ ...previous, company: value }));
+            }}
             placeholder="Sterling Logistics Group"
             className="w-full px-4 py-3 rounded-xl border border-border-soft bg-[#F7F8F2] text-forest text-sm focus:outline-none focus:border-forest"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+          <label htmlFor="contact-phone" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
             Phone Number
           </label>
           <input
             type="tel"
+            id="contact-phone"
+            name="phone"
+            autoComplete="tel"
             value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            onChange={(event) => {
+              const value = event.target.value;
+              setFormData((previous) => ({ ...previous, phone: value }));
+            }}
             placeholder="+1 (555) 019-2834"
             className="w-full px-4 py-3 rounded-xl border border-border-soft bg-[#F7F8F2] text-forest text-sm focus:outline-none focus:border-forest"
           />
@@ -139,12 +162,17 @@ export function ContactForm() {
       {/* Facility & Monthly Spend */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+          <label htmlFor="contact-facilityType" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
             Facility Classification
           </label>
           <select
+            id="contact-facilityType"
+            name="facilityType"
             value={formData.facilityType}
-            onChange={(e) => setFormData({ ...formData, facilityType: e.target.value })}
+            onChange={(event) => {
+              const value = event.target.value;
+              setFormData((previous) => ({ ...previous, facilityType: value }));
+            }}
             className="w-full px-4 py-3 rounded-xl border border-border-soft bg-[#F7F8F2] text-forest text-sm focus:outline-none focus:border-forest"
           >
             <option>Industrial Manufacturing</option>
@@ -157,12 +185,17 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+          <label htmlFor="contact-monthlyBill" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
             Monthly Electrical Utility Spend
           </label>
           <select
+            id="contact-monthlyBill"
+            name="monthlyBill"
             value={formData.monthlyBill}
-            onChange={(e) => setFormData({ ...formData, monthlyBill: e.target.value })}
+            onChange={(event) => {
+              const value = event.target.value;
+              setFormData((previous) => ({ ...previous, monthlyBill: value }));
+            }}
             className="w-full px-4 py-3 rounded-xl border border-border-soft bg-[#F7F8F2] text-forest text-sm focus:outline-none focus:border-forest"
           >
             <option>Under $5,000 / mo</option>
@@ -176,10 +209,10 @@ export function ContactForm() {
 
       {/* Solutions Multi-select */}
       <div>
-        <label className="block text-xs font-bold uppercase tracking-wider text-forest mb-2">
+        <div id="contact-solutions-label" className="block text-xs font-bold uppercase tracking-wider text-forest mb-2">
           Solutions of Interest (Select All Applicable)
-        </label>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        </div>
+        <div role="group" aria-labelledby="contact-solutions-label" className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {["Solar PV", "Battery BESS Storage", "Wind Generation", "Solara OS Telemetry"].map(
             (sol) => {
               const isSelected = formData.solutions.includes(sol);
@@ -187,11 +220,12 @@ export function ContactForm() {
                 <button
                   type="button"
                   key={sol}
+                  aria-pressed={isSelected}
                   onClick={() => toggleSolution(sol)}
                   className={`p-2.5 rounded-xl border text-xs font-heading font-semibold transition-all ${
                     isSelected
                       ? "bg-forest text-lime border-forest shadow-sm"
-                      : "bg-[#F7F8F2] text-text-secondary border-border-soft hover:border-forest/40"
+                      : "bg-[#F7F8F2] text-inherit border-border-soft hover:border-forest/40"
                   }`}
                 >
                   {sol}
@@ -204,13 +238,18 @@ export function ContactForm() {
 
       {/* Message Textarea */}
       <div>
-        <label className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
+        <label htmlFor="contact-message" className="block text-xs font-bold uppercase tracking-wider text-forest mb-1.5">
           Project Notes or Site Specifics (Optional)
         </label>
         <textarea
           rows={3}
+          id="contact-message"
+          name="message"
           value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          onChange={(event) => {
+              const value = event.target.value;
+              setFormData((previous) => ({ ...previous, message: value }));
+            }}
           placeholder="e.g. 120,000 sq ft TPO membrane roof, interested in peak shaving battery storage and carport canopies..."
           className="w-full px-4 py-3 rounded-xl border border-border-soft bg-[#F7F8F2] text-forest text-sm focus:outline-none focus:border-forest resize-none"
         />

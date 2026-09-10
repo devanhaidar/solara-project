@@ -1,19 +1,17 @@
-"use client";
-
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer } from "@/lib/motion";
+import * as motion from "framer-motion/client";
 import {
+  Activity,
   ArrowRight,
+  BatteryCharging,
+  CheckCircle2,
+  Cpu,
   Sun,
   Wind,
-  BatteryCharging,
-  Cpu,
-  Activity,
   Zap,
-  CheckCircle2,
 } from "lucide-react";
-import { fadeInUp, staggerContainer } from "@/lib/motion";
+import Image from "next/image";
+import Link from "next/link";
 
 export function SolutionsSection() {
   return (
@@ -276,7 +274,7 @@ export function SolutionsSection() {
                   <span>Smart Energy Tech</span>
                 </span>
                 <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-forest/5 text-forest text-xs font-semibold">
-                  <Activity size={12} className="text-lime-dark text-[#68A326] animate-pulse" />
+                  <Activity size={12} className="text-inherit text-[#68A326] animate-pulse" />
                   <span>Live Telemetry</span>
                 </span>
               </div>

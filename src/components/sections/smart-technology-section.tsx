@@ -1,17 +1,15 @@
-"use client";
-
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer } from "@/lib/motion";
+import * as motion from "framer-motion/client";
 import {
   ArrowRight,
-  Cpu,
-  Zap,
-  Radio,
   BarChart3,
   Battery,
   Cloud,
+  Cpu,
+  Radio,
+  Zap,
 } from "lucide-react";
-import { fadeInUp, staggerContainer } from "@/lib/motion";
+import Link from "next/link";
 
 const techPillars = [
   {
@@ -105,7 +103,7 @@ export function SmartTechnologySection() {
 
             <div className="pt-1">
               <Link
-                href="/technology"
+                href="/solutions/smart-energy"
                 className="inline-flex items-center gap-2 font-heading font-bold text-forest text-xs sm:text-sm group hover:text-green-dark transition-colors"
               >
                 <span>Discover the complete IoT technology stack</span>

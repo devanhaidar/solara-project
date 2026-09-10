@@ -1,12 +1,12 @@
 /**
- * Brightly UI — Button Component
+ * Solara UI — Button Component
  *
  * Variants: lime (primary CTA), dark, secondary (outline)
  * All buttons use fully-rounded (pill) shape per the design system.
  */
 
-import { forwardRef, type ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
+import { forwardRef, type ButtonHTMLAttributes } from "react";
 
 type ButtonVariant = "lime" | "dark" | "secondary";
 type ButtonSize = "default" | "lg";
@@ -14,7 +14,6 @@ type ButtonSize = "default" | "lg";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
-  href?: string;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
@@ -30,14 +29,15 @@ const sizeStyles: Record<ButtonSize, string> = {
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "lime", size = "default", children, ...props }, ref) => {
+  ({ className, variant = "lime", size = "default", type = "button", children, ...props }, ref) => {
     return (
       <button
         ref={ref}
+        type={type}
         className={cn(
           "inline-flex items-center justify-center gap-2",
-          "rounded-[--radius-button] font-heading font-semibold",
-          "transition-all duration-[--duration-fast] ease-[--ease-smooth]",
+          "rounded-(--radius-button) font-heading font-semibold",
+          "transition-all duration-(--duration-fast) ease-(--ease-smooth)",
           "cursor-pointer select-none",
           "focus-visible:outline-2 focus-visible:outline-lime focus-visible:outline-offset-2",
           "disabled:opacity-50 disabled:cursor-not-allowed",
@@ -55,4 +55,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = "Button";
 
-export { Button, type ButtonProps, type ButtonVariant };
+export { Button,type ButtonProps,type ButtonVariant };

@@ -1,16 +1,14 @@
-"use client";
-
-import { motion } from "framer-motion";
-import {
-  TrendingUp,
-  Leaf,
-  Globe,
-  Trees,
-  Car,
-  Zap,
-  Sparkles,
-} from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import * as motion from "framer-motion/client";
+import {
+  Car,
+  Globe,
+  Leaf,
+  Sparkles,
+  Trees,
+  TrendingUp,
+  Zap,
+} from "lucide-react";
 
 const impactMetrics = [
   {

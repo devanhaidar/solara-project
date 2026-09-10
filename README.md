@@ -2,6 +2,21 @@
 
 > Modern, high-performance web platform for **Solara Energy**, a clean-tech enterprise delivering smart solar, wind, battery storage, and intelligent IoT energy management systems.
 
+## Demo scope
+
+This repository is a frontend slicing demo. Company details, testimonials,
+certifications, projects, and telemetry are sample content. Contact and newsletter
+forms only demonstrate local UI states: they do not send, persist, or subscribe
+any data. Legal footer items are intentionally disabled because legal pages are
+outside this demo. The technology link opens the existing Smart Energy page.
+
+The ROI calculator is illustrative: annual savings use fixed sector multipliers
+(industrial 42%, commercial 38%, agricultural 35%), PV sizing uses monthly spend
+divided by 85, CO₂ uses savings divided by 210, and payback is a fixed sample
+value. These are UI fixtures, not financial, tax, or engineering calculations.
+
+Run `npm run lint`, `npm run build`, and `npm audit` before sharing changes.
+
 ---
 
 ## Hero Section Preview

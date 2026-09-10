@@ -1,20 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
-import { PageHeader } from "@/components/ui/page-header";
 import { Footer } from "@/components/navigation/footer";
 import { FinalCtaSection } from "@/components/sections/cta-section";
+import { PageHeader } from "@/components/ui/page-header";
 import {
-  Cpu,
-  ShieldCheck,
-  Zap,
   Activity,
-  CheckCircle2,
-  BarChart3,
-  Server,
+  Cpu,
   Radio,
-  ArrowRight,
+  Server,
 } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Smart Energy Management & Solara OS",
@@ -72,7 +66,7 @@ export default function SmartEnergyPage() {
                 <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-forest tracking-tight mt-2 leading-tight">
                   Turning Megawatts into Predictable Enterprise Savings
                 </h2>
-                <p className="mt-5 text-text-secondary text-base sm:text-lg leading-relaxed font-body">
+                <p className="mt-5 text-inherit text-base sm:text-lg leading-relaxed font-body">
                   Modern energy markets are dynamic, with electricity pricing fluctuating every 15 minutes. Solara OS uses predictive neural network models trained on regional weather forecasts, grid load curves, and facility production schedules to make millisecond dispatch decisions.
                 </p>
 
@@ -133,7 +127,7 @@ export default function SmartEnergyPage() {
                     <h3 className="font-heading font-bold text-lg text-forest mb-2">
                       {m.title}
                     </h3>
-                    <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
+                    <p className="text-inherit text-xs sm:text-sm leading-relaxed">
                       {m.desc}
                     </p>
                   </div>

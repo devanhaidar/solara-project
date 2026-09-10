@@ -1,8 +1,6 @@
-"use client";
-
-import Link from "next/link";
+import * as motion from "framer-motion/client";
 import { ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface BreadcrumbItem {
   label: string;

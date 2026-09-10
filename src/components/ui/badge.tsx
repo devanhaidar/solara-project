@@ -1,5 +1,5 @@
 /**
- * Brightly UI — Badge Component
+ * Solara UI — Badge Component
  *
  * Small sustainability badges / eyebrow labels.
  * Examples: "Renewable Energy for a Cleaner Future", "100% Clean Energy"

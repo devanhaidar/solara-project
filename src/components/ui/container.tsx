@@ -1,5 +1,5 @@
 /**
- * Brightly UI — Container Component
+ * Solara UI — Container Component
  *
  * Responsive content wrapper with max-width and padding
  * following the PRD layout system.

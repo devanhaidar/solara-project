@@ -1,14 +1,14 @@
-import { HeroSection } from "@/components/sections/hero-section";
+import { Footer } from "@/components/navigation/footer";
 import { AboutSection } from "@/components/sections/about-section";
-import { SolutionsSection } from "@/components/sections/solutions-section";
-import { WhyRenewableSection } from "@/components/sections/why-renewable-section";
+import { FinalCtaSection } from "@/components/sections/cta-section";
 import { FeaturedProjectsSection } from "@/components/sections/featured-projects-section";
-import { SustainabilityImpactSection } from "@/components/sections/sustainability-impact-section";
+import { HeroSection } from "@/components/sections/hero-section";
 import { HowItWorksSection } from "@/components/sections/how-it-works-section";
 import { SmartTechnologySection } from "@/components/sections/smart-technology-section";
+import { SolutionsSection } from "@/components/sections/solutions-section";
+import { SustainabilityImpactSection } from "@/components/sections/sustainability-impact-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
-import { FinalCtaSection } from "@/components/sections/cta-section";
-import { Footer } from "@/components/navigation/footer";
+import { WhyRenewableSection } from "@/components/sections/why-renewable-section";
 
 export default function HomePage() {
   return (

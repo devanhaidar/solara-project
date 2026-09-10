@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, DollarSign, Leaf, MapPin, Zap } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 export interface ProjectItem {
   id: string;
@@ -146,6 +146,8 @@ export function ProjectsGallery() {
           return (
             <button
               key={cat.key}
+              type="button"
+              aria-pressed={isActive}
               onClick={() => setActiveCategory(cat.key)}
               className={`px-5 py-2.5 rounded-full font-heading font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
                 isActive
@@ -208,7 +210,7 @@ export function ProjectsGallery() {
                     {project.title}
                   </h3>
 
-                  <p className="text-text-secondary text-xs sm:text-sm mt-2.5 line-clamp-2 leading-relaxed">
+                  <p className="text-inherit text-xs sm:text-sm mt-2.5 line-clamp-2 leading-relaxed">
                     {project.description}
                   </p>
 

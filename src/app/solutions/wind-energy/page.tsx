@@ -1,19 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import { PageHeader } from "@/components/ui/page-header";
 import { Footer } from "@/components/navigation/footer";
 import { FinalCtaSection } from "@/components/sections/cta-section";
-import {
-  Wind,
-  ShieldCheck,
-  Zap,
-  TrendingDown,
-  CheckCircle2,
-  Cpu,
-  BarChart,
-  ArrowRight,
-} from "lucide-react";
+import { PageHeader } from "@/components/ui/page-header";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Industrial & Utility Wind Generation Solutions",
@@ -57,7 +46,7 @@ export default function WindEnergyPage() {
                 <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-forest tracking-tight mt-2 leading-tight">
                   Nighttime & Winter Basal Power for High-Demand Facilities
                 </h2>
-                <p className="mt-5 text-text-secondary text-base sm:text-lg leading-relaxed font-body">
+                <p className="mt-5 text-inherit text-base sm:text-lg leading-relaxed font-body">
                   While solar generates peak output during sunny middays, industrial energy demand persists 24 hours a day. Solara&apos;s direct-drive onshore wind generators capture atmospheric pressure gradients day and night, eliminating costly nocturnal grid import tariffs.
                 </p>
 
@@ -110,7 +99,7 @@ export default function WindEnergyPage() {
                   <div className="sm:col-span-4 font-heading font-bold text-forest text-sm sm:text-base">
                     {spec.label}
                   </div>
-                  <div className="sm:col-span-8 text-text-secondary text-sm sm:text-base">
+                  <div className="sm:col-span-8 text-inherit text-sm sm:text-base">
                     {spec.value}
                   </div>
                 </div>

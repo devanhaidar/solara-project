@@ -1,17 +1,15 @@
-"use client";
-
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { fadeInRight, fadeInUp, staggerContainer } from "@/lib/motion";
+import { companyStats } from "@/lib/site-config";
+import * as motion from "framer-motion/client";
 import {
   ArrowRight,
-  CheckCircle2,
   Award,
+  CheckCircle2,
   Sparkles,
   TrendingUp,
 } from "lucide-react";
-import { fadeInUp, fadeInRight, staggerContainer } from "@/lib/motion";
-import { companyStats } from "@/lib/site-config";
+import Image from "next/image";
+import Link from "next/link";
 
 const highlights = [
   {
