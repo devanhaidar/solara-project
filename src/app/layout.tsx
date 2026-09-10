@@ -52,6 +52,18 @@ export const metadata: Metadata = {
     description:
       "Smart renewable-energy solutions designed to reduce costs, improve energy independence, and support a cleaner planet.",
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
 };
 
 import { Navbar } from "@/components/navigation/navbar";
